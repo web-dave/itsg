@@ -5,17 +5,20 @@ import {
   LOAD_BOOKS,
   LoadBooks,
   BookActions,
-  WAIT_FOR_BOOKS
+  WAIT_FOR_BOOKS,
+  SELECT_BOOK
 } from './books.actions';
 
 export const booksStoreName = 'books';
 
 export interface BooksState {
   books: Book[];
+  selected: Book;
 }
 
 export const initialState: BooksState = {
-  books: []
+  books: [],
+  selected: null
 };
 
 export function booksReducer(
@@ -27,6 +30,11 @@ export function booksReducer(
       return {
         ...state,
         books: action.books
+      };
+    case SELECT_BOOK:
+      return {
+        ...state,
+        selected: state.books.filter(b => b.isbn === action.isbn)[0]
       };
     default: {
       return state;

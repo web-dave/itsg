@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Actions, ofType, Effect } from '@ngrx/effects';
+import { tap } from 'rxjs/operators';
 import { WAIT_FOR_BOOKS } from './books.actions';
 import { BookDataService } from '../shared/book-data.service';
-import { tap } from 'rxjs/operators';
 
 @Injectable()
 export class BookEffects {

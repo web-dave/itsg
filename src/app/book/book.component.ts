@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { BookDataService } from './shared/book-data.service';
 import { Store } from '@ngrx/store';
 import { BooksState } from './store/books.reducer';
 import { WaitForBooks } from './store/books.actions';

@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { BooksState, booksStoreName } from '../store/books.reducer';
 import { getBooks } from '../store/books.selectors';
+import { SelectBook } from '../store/books.actions';
 
 @Component({
   selector: 'book-list',
@@ -18,5 +19,8 @@ export class BookListComponent implements OnInit {
 
   ngOnInit() {
     this.books$ = this.store.select(getBooks);
+  }
+  selectBook(isbn) {
+    this.store.dispatch(new SelectBook(isbn));
   }
 }
