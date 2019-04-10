@@ -11,6 +11,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BookNewComponent } from './book-new/book-new.component';
 import { StoreModule } from '@ngrx/store';
 import { booksStoreName, booksReducer } from './store/books.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { BookEffects } from './store/books.effects';
 
 @NgModule({
   imports: [
@@ -19,7 +21,8 @@ import { booksStoreName, booksReducer } from './store/books.reducer';
     FormsModule,
     CommonModule,
     ReactiveFormsModule,
-    StoreModule.forFeature(booksStoreName, booksReducer)
+    StoreModule.forFeature(booksStoreName, booksReducer),
+    EffectsModule.forFeature([BookEffects])
   ],
   declarations: [
     BookComponent,
