@@ -3,7 +3,8 @@ import { Book } from '../shared/book';
 import { BookDataService } from '../shared/book-data.service';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { BooksState, booksStoreName, getBooks } from '../store/books.reducer';
+import { BooksState, booksStoreName } from '../store/books.reducer';
+import { getBooks } from '../store/books.selectors';
 
 @Component({
   selector: 'book-list',
@@ -13,10 +14,9 @@ import { BooksState, booksStoreName, getBooks } from '../store/books.reducer';
 export class BookListComponent implements OnInit {
   books$: Observable<Book[]>;
 
-  constructor(private store: Store<{}>) {}
+  constructor(private store: Store<BooksState>) {}
 
   ngOnInit() {
-    // this.books$ = this.bookData.getBooks()
     this.books$ = this.store.select(getBooks);
   }
 }
